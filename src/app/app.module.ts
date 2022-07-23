@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ProductComponent } from './product/product.component';
 import { InputEmailDirective } from './input-email.directive';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
     AdminProductsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [ProductComponent]
