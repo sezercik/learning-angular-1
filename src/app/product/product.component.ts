@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,13 +8,21 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent{
-  name = new FormControl('Samsung S5'); 
-  description = new FormControl('Iyi telefon'); 
-  price = new FormControl('1000'); 
-  imageUrl = new FormControl('1.jpg'); 
+  productForm = new FormGroup({
+    name: new FormControl('',[Validators.required,Validators.minLength(5)]),
+    description: new FormControl('',Validators.required), 
+    price: new FormControl('',Validators.required),
+    imageUrl: new FormControl('',Validators.required) 
+  })
 
-  updateName(){
-    this.name.setValue('Samsung S10')
+  onSubmit(){
+    console.log(this.productForm.value);
   }
 
+  updateProduct(){
+    this.productForm.patchValue({
+      name: 'Iphone X',
+      price: '5000'
+    })
+  }
 }
